@@ -15,7 +15,7 @@ print("Types of rooms found: ", len(room_types))
 rooms = []
 
 for item in room_types:
- # Get all the file names
+ #get all the file names
  all_rooms = os.listdir('rooms_dataset' + '/' +item)
  #print(all_shoes)
 
@@ -70,3 +70,31 @@ labels
 
 images = np.array(images)
 images.shape
+
+###########
+
+#load ResNet50 model without the top classification layer
+base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(im_size, im_size, 3))
+
+#add custom layers for your classification task
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+x = Dense(1024, activation='relu')(x)
+predictions = Dense(len(room_types), activation='softmax')(x)
+
+model = Model(inputs=base_model.input, outputs=predictions)
+
+#preprocess your images
+images = images / 255.0  # Normalize to [0,1]
+
+#convert labels to integers and then to one-hot encoded labels
+le = LabelEncoder()
+integer_encoded_labels = le.fit_transform(labels)
+onehot_labels = to_categorical(integer_encoded_labels)
+
+#compile the model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# model.fit(images, onehot_labels, epochs=10, batch_size=32, validation_split=0.1)
+
+
