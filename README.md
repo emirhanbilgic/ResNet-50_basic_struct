@@ -2,7 +2,7 @@
 
 # ResNet (Residual Network)
 
-**ResNet** is a deep learning architecture designed to facilitate the training of very deep neural networks. Introduced by Kaiming He et al. in 2015, the key innovation is the introduction of "residual connections" or "skip connections".
+**ResNet** is a deep learning architecture designed to facilitate the training of deep neural networks. The key innovation is the introduction of "residual connections" or "skip connections".
 
 ## Deep Dive: Residual Connections
 
@@ -29,9 +29,3 @@ The intuition is that it's easier to optimize the residual (or the difference) t
 - **Activation:** Uses ReLU post batch normalization.
 - **Pooling:** Employs max and average pooling.
 - **Parameters:** Efficient architecture; ResNet50 has ~25.6 million parameters.
-
-## Applications
-
-- Image Classification
-- Object Detection
-- Semantic Segmentation
