@@ -4,6 +4,8 @@
 
 **ResNet** is a deep learning architecture designed to facilitate the training of deep neural networks. The key innovation is the introduction of "residual connections" or "skip connections".
 
+ResNet-50 is the sub-architecture with 50 layers of the ResNet family.
+
 ## Deep Dive: Residual Connections
 
 Traditional deep neural networks can suffer from vanishing and exploding gradient problems as they grow deeper. ResNet's architecture addresses this by introducing "residual connections."
